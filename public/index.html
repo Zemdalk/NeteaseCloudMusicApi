@@ -10,6 +10,21 @@
     body{
         text-align: center;
         background-color: #dff0d8;
+        margin: auto;
+    }
+    a:hover{
+        color: green;
+        background: transparent;
+        border-color: #bbb#fff#fff#aaa;
+    }   /*鼠标经过超链接的样式*/
+    a{/*完全清除超链接下划线效果*/
+        text-decoration: none;
+        border:solid 1px;
+        padding: auto;
+        color: #444;
+        background: #f99;    /*超链接背景颜色*/
+        border-color: #fff#aaa#aaa#fff;
+        zoom: 1;      /*解决IE浏览器无法显示问题*/
     }
     /* .box{
         padding: 15px;
@@ -129,7 +144,12 @@
                 avatar.style.width = '50px';
                 avatar.appendChild(img);
                 
-                nickname.innerText = data.userprofiles[i].nickname;
+                let user = document.createElement('a');
+                user.href = 'https://music.163.com/#/user/home?id=' + data.userprofiles[i].userId;
+                user.target = '_blank';
+                user.rel = 'noreferrer noopener';
+                user.innerText = data.userprofiles[i].nickname;
+                nickname.appendChild(user);
                 
                 row.appendChild(num);
                 row.appendChild(avatar);
@@ -208,7 +228,12 @@
                 let creator = document.createElement('td');
 
                 num.innerText = i+1;
-                playlistName.innerText = data[i].name;
+                let playlistLink = document.createElement('a');
+                playlistLink.href = 'https://music.163.com/#/playlist?id=' + data[i].id;
+                playlistLink.target = '_blank';
+                playlistLink.rel = 'noreferrer noopener';
+                playlistLink.innerText = data[i].name;
+                playlistName.appendChild(playlistLink);
                 creator.innerText = data[i].creator.nickname;
 
                 row.appendChild(num);
