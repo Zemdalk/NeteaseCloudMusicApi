@@ -1,0 +1,83 @@
+body{
+    text-align: center;
+    background-color: #dff0d8;
+    margin: auto;
+}
+a:hover{ /*鼠标经过超链接的样式*/
+    color: green;
+    background: transparent;
+    border-color: #bbb#fff#fff#aaa;
+}
+a{      /*完全清除超链接下划线效果*/
+    text-decoration: none;
+    border:solid 1px;
+    padding: auto;
+    color: #444;
+    background: #f99;    /*超链接背景颜色*/
+    border-color: #fff#aaa#aaa#fff;
+    zoom: 1;      /*解决IE浏览器无法显示问题*/
+}
+/* .box{
+    padding: 15px;
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+    color: #3c763d;
+    background-color: #dff0d8;
+} */
+table.gridtable {
+    margin: 0 auto;
+    font-family: verdana,arial,sans-serif;
+    /* font-size:11px; */
+    color:#333333;
+    border-width: 1px;
+    border-color: #666666;
+    border-collapse: collapse;
+}
+table.gridtable th {
+    border-width: 1px;
+    padding: 8px;
+    height: 10px;
+    width: 200px;
+    text-align: center;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+}
+table.gridtable td {
+    border-width: 1px;
+    padding: 8px;
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+}
+#displayBoxes{
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-around;
+}
+.leftbox{
+    width: 30%;
+    /* left: 0; */
+    /* float: left; */
+    /* border: #f99;
+    border-style: ridge; */
+}
+.middlebox{
+    width: 30%;
+    /* left: auto; */
+    /* float: none; */
+    /* border: #f99;
+    border-style: ridge; */
+}
+.rightbox{
+    width: 30%;
+    /* right: 0; */
+    /* float: right; */
+    /* border: #f99;
+    border-style: ridge; */
+}
