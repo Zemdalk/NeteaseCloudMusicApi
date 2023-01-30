@@ -141,17 +141,23 @@ async function PlaylistAnalysis(
     if (bpm == null || bpm == NaN) continue
     bpm = Math.floor(bpm / bpm_gap) * bpm_gap
     console.log(`bpm: ${bpm}`)
-    bpm_interval = `${bpm}-${bpm + bpm_gap - 1}`
+    bpm_interval = bpm
     if (!bpm_stat[bpm_interval]) {
       bpm_stat[bpm_interval] = 1
     } else {
       bpm_stat[bpm_interval]++
     }
   }
+  let bpm_stat_new = {}
+  for (let item in bpm_stat) {
+    bpm_stat_new[`${Number(item)}-${Number(item) + bpm_gap - 1}`] =
+      bpm_stat[item]
+  }
+
   console.log(style_stat)
   console.log(lang_stat)
   console.log(bpm_stat)
-  // return [style_stat, lang_stat, bpm_stat];
+
   let lang_sorted = Object.entries(lang_stat)
     .sort((a, b) => b[1] - a[1])
     .reduce((acc, [key, value]) => {
@@ -159,7 +165,8 @@ async function PlaylistAnalysis(
       return acc
     }, {})
   console.log(lang_sorted)
-  displayResult(style_stat, lang_sorted, bpm_stat, displayAreaId)
+
+  displayResult(style_stat, lang_sorted, bpm_stat_new, displayAreaId)
 }
 
 async function displayResult(style_stat, lang_stat, bpm_stat, displayAreaId) {
