@@ -59,7 +59,14 @@ async function getPlaylistSongInfo(playlist_id, limit = LIMIT, offset = 0) {
       }
     }
   }
-
+  //   song_styles.sort(compare(""))
+  // let sorted_lang = Object.entries(song_lang)
+  //   .sort((a, b) => b[1] - a[1])
+  //   .reduce((acc, [key, value]) => {
+  //     acc[key] = value;
+  //     return acc;
+  //   }, {});
+  // console.log(sorted_lang);
   return [song_id, song_styles, song_lang, song_bpm]
 }
 
@@ -145,7 +152,14 @@ async function PlaylistAnalysis(
   console.log(lang_stat)
   console.log(bpm_stat)
   // return [style_stat, lang_stat, bpm_stat];
-  displayResult(style_stat, lang_stat, bpm_stat, displayAreaId)
+  let lang_sorted = Object.entries(lang_stat)
+    .sort((a, b) => b[1] - a[1])
+    .reduce((acc, [key, value]) => {
+      acc[key] = value
+      return acc
+    }, {})
+  console.log(lang_sorted)
+  displayResult(style_stat, lang_sorted, bpm_stat, displayAreaId)
 }
 
 async function displayResult(style_stat, lang_stat, bpm_stat, displayAreaId) {
